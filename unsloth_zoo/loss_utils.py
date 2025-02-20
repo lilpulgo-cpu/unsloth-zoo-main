@@ -19,8 +19,11 @@ from packaging.version import Version
 import os
 torch_nn_functional_cross_entropy = torch.nn.functional.cross_entropy
 from triton import __version__ as triton_version
-major, minor = torch.cuda.get_device_capability()
 
+if torch.cuda.is_available():
+    major_version, minor_version = torch.cuda.get_device_capability()
+else:
+    major_version, minor_version = (0, 0)
 global HAS_CUT_CROSS_ENTROPY
 if (Version(torch.__version__) >= Version("2.4.0")) and \
     (not ((major <= 7) and (minor < 5))) and \
