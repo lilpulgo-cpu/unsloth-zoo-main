@@ -34,8 +34,9 @@ import time
 import logging
 import sys
 from .utils import Version
-import triton
+#import triton
 from .peft_utils import get_lora_layer_modules
+from ._utils import __version__
 
 # Disable some compilations if old versions are seen
 OLD_TORCH_VERSION = Version(torch.__version__) < Version("2.5.0")
@@ -45,7 +46,7 @@ if torch.cuda.is_available():
 else:
     major_version, minor_version = (0, 0)
 OLD_CUDA_ARCH_VERSION = (major <= 7) and (minor < 5)
-OLD_TRITON_VERSION = Version(triton.__version__) < Version("3.0.0")
+OLD_TRITON_VERSION = Version(__version__) < Version("3.0.0")
 
 
 # Ignore logging messages
