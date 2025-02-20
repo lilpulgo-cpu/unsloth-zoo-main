@@ -38,7 +38,7 @@ __all__ = [
     "unpatch_unsloth_smart_gradient_checkpointing"
 ]
 
-torch_version = torch.__version__
+torch_version = torch
 if Version(torch_version) < Version("2.4.0"):
     torch_amp_custom_fwd = torch.cuda.amp.custom_fwd
     torch_amp_custom_bwd = torch.cuda.amp.custom_bwd

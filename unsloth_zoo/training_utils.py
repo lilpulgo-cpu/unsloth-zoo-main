@@ -210,7 +210,7 @@ def unsloth_train(trainer):
     #     .to(device = "cpu", non_blocking = True)[0]
 
     # Mixed precision scaling
-    torch_version = torch.__version__
+    torch_version = torch
     if model.config.torch_dtype == torch.float16:
         mixed_precision = "fp16"
         mixed_dtype = torch.float16
@@ -228,7 +228,7 @@ def unsloth_train(trainer):
     optimizer.zero_grad()
 
     # torch.cuda.amp.autocast is deprecated >= 2.4
-    torch_version = torch.__version__
+    torch_version = torch
     if Version(torch_version) < Version("2.4.0"):
         autocast_context_manager = torch.cuda.amp.autocast(
             dtype = mixed_dtype,

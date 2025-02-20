@@ -36,10 +36,10 @@ import sys
 from .utils import Version
 #import triton
 from .peft_utils import get_lora_layer_modules
-from ._utils import __version__
+#from ._utils import __version__
 
 # Disable some compilations if old versions are seen
-OLD_TORCH_VERSION = Version(torch.__version__) < Version("2.5.0")
+OLD_TORCH_VERSION = Version(torch) < Version("2.5.0")
 
 if torch.cuda.is_available():
     major_version, minor_version = torch.cuda.get_device_capability()
